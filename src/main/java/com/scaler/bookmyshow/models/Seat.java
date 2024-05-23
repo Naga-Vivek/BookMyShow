@@ -1,7 +1,6 @@
 package com.scaler.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,13 +12,16 @@ import lombok.Setter;
 public class Seat extends BaseModel {
     private String name;
 
-    @ManyToOne
+    //@ManyToOne
+    @Enumerated(EnumType.ORDINAL)
     private SeatType seatType;
 
     private int row;
+    @Column(name = "col")
     private int column;
 
-    @ManyToOne
+    //@ManyToOne
+    @Enumerated(EnumType.ORDINAL)
     private SeatStatus seatStatus;
 
 }

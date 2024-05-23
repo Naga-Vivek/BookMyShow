@@ -1,7 +1,6 @@
 package com.scaler.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,10 +16,14 @@ public class Movie extends BaseModel {
     @ManyToMany
     private List<Actor> actors;
 
-    @ManyToMany
-    private List<Feature> movieFeatures;
+    //@ManyToMany
+    @ElementCollection
+    @Enumerated(EnumType.ORDINAL)
+    private List<Feature> features;
 
-    @ManyToMany
+    //@ManyToMany
+    @ElementCollection
+    @Enumerated(EnumType.ORDINAL)
     private List<Genre> genre;
 
 

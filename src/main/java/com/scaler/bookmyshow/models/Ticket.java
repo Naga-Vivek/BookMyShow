@@ -1,9 +1,6 @@
 package com.scaler.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +22,8 @@ public class Ticket extends BaseModel {
     private List<ShowSeat> showSeats;
     private double totalAmount;
 
-    @ManyToOne
+    //@ManyToOne
+    @Enumerated(EnumType.ORDINAL)
     private TicketStatus ticketStatus;
 
     private Date timeOfBooking;
@@ -33,3 +31,9 @@ public class Ticket extends BaseModel {
     @OneToMany(mappedBy = "ticket")
     private List<Payment> payments;
 }
+
+/*
+For Bi-directional OneToMany relation ,
+Along with @OneToMany annotation ,
+specify the mappedBy attribute as the attribute owning the relationship in other class
+ */
