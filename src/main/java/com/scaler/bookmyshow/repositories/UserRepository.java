@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-    List<User> findAllById(List<Long> userIds);
+    List<User> findAllByIdIsIn(List<Long> userIds);
 
     @Override
     Optional<User> findById(Long userId);

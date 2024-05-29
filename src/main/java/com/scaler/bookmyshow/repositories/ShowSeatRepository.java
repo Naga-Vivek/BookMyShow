@@ -14,7 +14,7 @@ public interface ShowSeatRepository extends JpaRepository<ShowSeat,Long> {
     //This class is responsible to interact with show_seat table in DB.
 
     @Lock(LockModeType.PESSIMISTIC_READ) //select * from show_seat where id in (1,2,3,4) for update.
-    List<ShowSeat> findAllById(List<Long> showSeatIds);
+    List<ShowSeat> findAllByIdIsIn(List<Long> showSeatIds);
 
     ShowSeat save(ShowSeat showSeat);
     //ShowSeat object that is getting returned will have the id associated.

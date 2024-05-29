@@ -33,7 +33,7 @@ public class TicketService {
         //Steps to book a ticket.
         //1. Fetch Show Seats from DB with the set of given showSeatIds.
         //showSeatIds -> (4, 5, 6, 7)
-        List<ShowSeat> showSeats = showSeatRepository.findAllById(showSeatIds); // FOR UPDATE
+        List<ShowSeat> showSeats = showSeatRepository.findAllByIdIsIn(showSeatIds); // FOR UPDATE
 
         //2. Check the status of ShowSeats.
         //3. If any of them is NOT AVAILABLE then throw an exception.
