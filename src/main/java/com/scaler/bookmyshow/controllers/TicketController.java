@@ -4,6 +4,7 @@ import com.scaler.bookmyshow.dtos.BookTicketRequestDTO;
 import com.scaler.bookmyshow.dtos.BookTicketResponseDTO;
 import com.scaler.bookmyshow.dtos.CancelTicketRequestDTO;
 import com.scaler.bookmyshow.dtos.CancelTicketResponseDTO;
+import com.scaler.bookmyshow.exceptions.ShowSeatNotAvailableException;
 import com.scaler.bookmyshow.models.ResponseStatus;
 import com.scaler.bookmyshow.models.Ticket;
 import com.scaler.bookmyshow.services.TicketService;
@@ -21,7 +22,7 @@ public class TicketController {
         this.ticketService = ticketService;
     }
     @PostMapping("/bookTicket")
-    public BookTicketResponseDTO bookTicket(BookTicketRequestDTO requestDTO){
+    public BookTicketResponseDTO bookTicket(BookTicketRequestDTO requestDTO) throws ShowSeatNotAvailableException {
         Ticket ticket = ticketService.bookTicket(
                 requestDTO.getShowSeatIds(),
                 requestDTO.getUserId()

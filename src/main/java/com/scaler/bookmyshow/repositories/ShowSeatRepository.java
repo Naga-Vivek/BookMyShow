@@ -2,7 +2,9 @@ package com.scaler.bookmyshow.repositories;
 
 import com.scaler.bookmyshow.models.Show;
 import com.scaler.bookmyshow.models.ShowSeat;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 public interface ShowSeatRepository extends JpaRepository<ShowSeat,Long> {
     //This class is responsible to interact with show_seat table in DB.
 
+    @Lock(LockModeType.PESSIMISTIC_READ) //select * from show_seat where id in (1,2,3,4) for update.
     List<ShowSeat> findAllById(List<Long> showSeatIds);
 
     ShowSeat save(ShowSeat showSeat);
