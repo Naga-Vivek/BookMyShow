@@ -5,12 +5,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 @Entity
 public class Theatre extends BaseModel {
     private String name;
