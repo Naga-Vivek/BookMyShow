@@ -3,10 +3,7 @@ package com.scaler.bookmyshow.controllers;
 import com.scaler.bookmyshow.models.Theatre;
 import com.scaler.bookmyshow.services.TheatreService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,10 +16,12 @@ public class TheatreController {
         this.theatreService = theatreService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Theatre>> getTheatres(@PathVariable("id") Long id){
+    @GetMapping()
+    public ResponseEntity<List<Theatre>> getTheatres(@RequestParam("cityId") Long id){
         List<Theatre> theatres = theatreService.getTheatres(id);
         return ResponseEntity.ok(theatres);
     }
 
 }
+// City - Theatre is  1:M  relationship
+// Having both City Controller & Theatre Controller APIs to test the bidirectional relationship between city & theatre

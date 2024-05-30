@@ -1,5 +1,6 @@
 package com.scaler.bookmyshow.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -16,6 +17,10 @@ import java.util.List;
 public class City extends BaseModel {
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "city")
+    @JsonManagedReference
     private List<Theatre> theatres;
 }
+// To avoid json infinite recursion for Bidirectional relationships,
+// We use @JsonManagedReference with @OneToMany and
+//        @JsonBackReference with @ManyToOne
